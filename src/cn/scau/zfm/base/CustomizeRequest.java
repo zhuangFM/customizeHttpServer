@@ -38,12 +38,11 @@ public class CustomizeRequest {
             this.uri = requestLine.split("\\s")[1];
             this.method = requestLine.split("\\s")[0];
             String[] strArr = requestStr.split("\n");
-            for (int i = 1;i<strArr.length;i++) {
+            for (int i = 1; i < strArr.length; i++) {
                 String str = strArr[i];
-                if("".equals(str))
+                if (str.length() <= 1)
                     continue;
                 this.requestHeaderParamMap.put(str.split(":")[0], str.split(":")[1]);
-                System.out.println(str);
             }
         }
     }

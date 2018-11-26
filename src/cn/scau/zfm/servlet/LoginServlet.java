@@ -10,6 +10,7 @@ public class LoginServlet extends AbstractServlet {
     @Override
     public void doGet(CustomizeRequest request, CustomizeResponse response) {
         try {
+            
             response.write("[GET]login.html", null);
         } catch (IOException e) {
             e.printStackTrace();

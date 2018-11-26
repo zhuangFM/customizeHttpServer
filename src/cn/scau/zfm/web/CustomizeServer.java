@@ -39,9 +39,14 @@ public class CustomizeServer {
                     @Override
                     public void run() {
                         dispatch(request, response);
+                        try {
+                            socket.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
                 });
-                socket.close();
+//                socket.close();
             }
         } catch (IOException e) {
             e.printStackTrace();
