@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>登录页面</title>
+	<meta charset="UTF-8">
+	<title>Login Page</title>
 </head>
 <body>
-	<form action="http://localhost/login" method="POST" >
-		用户：<input type="text" name="user" id="user" /><br>
-		密码：<input type="text" name="password" id="password" />
-		<input type="submit" name="" value="提交" style="margin-left: 20px;">
+	<form action="http://localhost:8081/login" method="POST" >
+		UID ：<input type="text" name="user" id="user" required /><br>
+		Pwd：<input type="text" name="password" id="password" required />
+		<input type="submit" name="" value="Submit" style="margin-left: 20px;">
 	</form>
 </body>
 </html>

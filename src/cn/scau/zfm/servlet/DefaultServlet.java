@@ -24,4 +24,13 @@ public class DefaultServlet extends AbstractServlet {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void doHead(CustomizeRequest request, CustomizeResponse response) {
+        try {
+            response.write("", null);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

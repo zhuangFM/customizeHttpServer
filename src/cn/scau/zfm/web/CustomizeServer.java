@@ -14,7 +14,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class CustomizeServer {
-    private final static int PORT = 80;
+    private final static int PORT = 8081;
     private static HashMap<String, String> servletMappingMap;
     private static ExecutorService threadPool = Executors.newCachedThreadPool();
 
@@ -31,15 +31,15 @@ public class CustomizeServer {
             ServerSocket serverSocket = new ServerSocket(PORT);
             while (true) {
                 Socket socket = serverSocket.accept();
-                InputStream inputStream = socket.getInputStream();
-                OutputStream outputStream = socket.getOutputStream();
-                CustomizeRequest request = new CustomizeRequest(inputStream);
-                CustomizeResponse response = new CustomizeResponse(outputStream);
                 threadPool.submit(new Runnable() {
                     @Override
                     public void run() {
-                        dispatch(request, response);
                         try {
+                            InputStream inputStream = socket.getInputStream();
+                            OutputStream outputStream = socket.getOutputStream();
+                            CustomizeRequest request = new CustomizeRequest(inputStream);
+                            CustomizeResponse response = new CustomizeResponse(outputStream);
+                            dispatch(request, response);
                             socket.close();
                         } catch (IOException e) {
                             e.printStackTrace();
