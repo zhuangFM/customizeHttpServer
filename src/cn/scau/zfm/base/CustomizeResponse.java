@@ -16,7 +16,9 @@ public class CustomizeResponse {
     public void write(String content, HashMap<String, String> paramMap) throws IOException {
         StringBuffer stringBuffer = new StringBuffer("");
         stringBuffer.append("HTTP/1.1 " + this.statusCode + " " + codeDesc + "\n")
-                .append("Content-Type:text/html\n");
+                .append("Content-Type:text/html\n")
+                .append("Pragma:no-cache\n")
+                .append("Cache-Control:no-cache\n");
         if (null != paramMap) {
             paramMap.keySet().forEach((key) -> {
                 String val = paramMap.get(key);

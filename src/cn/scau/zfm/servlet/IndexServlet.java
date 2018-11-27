@@ -6,6 +6,7 @@ import cn.scau.zfm.base.CustomizeResponse;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.util.HashMap;
 
 public class IndexServlet extends AbstractServlet {
@@ -16,7 +17,7 @@ public class IndexServlet extends AbstractServlet {
             HashMap<String, String> paramMap = request.getRequestHeaderParamMap();
             if (!paramMap.containsKey("Cookie")) {
                 HashMap<String, String> redirectMap = new HashMap<>();
-                redirectMap.put("Location", "http://localhost:8081/login");
+                redirectMap.put("Location", "http://localhost/login");
                 response.setStatusCode("301");
                 response.setCodeDesc("Moved Permanently");
                 response.write("", redirectMap);
@@ -34,7 +35,7 @@ public class IndexServlet extends AbstractServlet {
             HashMap<String, String> paramMap = request.getRequestHeaderParamMap();
             if (!paramMap.containsKey("Cookie")) {
                 HashMap<String, String> redirectMap = new HashMap<>();
-                redirectMap.put("Location", "http://localhost:8081/login");
+                redirectMap.put("Location", "http://localhost/login");
                 response.setStatusCode("301");
                 response.setCodeDesc("Moved Permanently");
                 response.write("", redirectMap);
@@ -64,16 +65,16 @@ public class IndexServlet extends AbstractServlet {
 
     private String getHtmlContent() throws IOException {
         String path = this.getClass().getClassLoader().getResource("cn/scau/zfm/html/index.html").getPath();
-
+        path = URLDecoder.decode(path, "utf-8");
         File file = new File(path);
 
         FileInputStream fileInputStream = new FileInputStream(file);
         byte[] bytes = new byte[1024];
         String htmlStr = "";
         int fileLength = 0;
-        if((fileLength=fileInputStream.read(bytes))>0){
-            htmlStr = new String (bytes,0,fileLength);
+        if ((fileLength = fileInputStream.read(bytes)) > 0) {
+            htmlStr = new String(bytes, 0, fileLength);
         }
-        return htmlStr ;
+        return htmlStr;
     }
 }

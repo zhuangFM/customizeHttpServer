@@ -14,7 +14,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class CustomizeServer {
-    private final static int PORT = 8081;
+    private final static int PORT = 80;
     private static HashMap<String, String> servletMappingMap;
     private static ExecutorService threadPool = Executors.newCachedThreadPool();
 

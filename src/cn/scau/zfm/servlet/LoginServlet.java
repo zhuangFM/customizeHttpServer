@@ -6,6 +6,7 @@ import cn.scau.zfm.base.CustomizeResponse;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.util.HashMap;
 
 public class LoginServlet extends AbstractServlet {
@@ -73,6 +74,7 @@ public class LoginServlet extends AbstractServlet {
 
     private String getHtmlContent(String htmlName) throws IOException {
         String path = this.getClass().getClassLoader().getResource("cn/scau/zfm/html/"+htmlName).getPath();
+        path = URLDecoder.decode(path, "utf-8");
 
         File file = new File(path);
 
